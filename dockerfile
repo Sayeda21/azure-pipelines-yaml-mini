@@ -1,12 +1,12 @@
-FROM python:3.10
+FROM node:latest
 
-WORKDIR /app
+WORKDIR /usr/src/app
 
-COPY requirements.txt .
-RUN pip install -r requirements.txt
+COPY package.json ./
+
+RUN npm install
 
 COPY . .
 
-EXPOSE 8000
-
-CMD ["Python", "app.py"]
+EXPOSE 4000
+CMD [ "node", "index.js" ]
